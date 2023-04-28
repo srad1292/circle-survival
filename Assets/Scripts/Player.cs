@@ -14,8 +14,13 @@ public class Player : MonoBehaviour
         myRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
+    private void Update() {
+        
+    }
+
     void FixedUpdate() {
         MovePlayer();
+        FaceMouse();
     }
 
     void OnMove(InputValue value) {
@@ -29,12 +34,20 @@ public class Player : MonoBehaviour
         float radius = 8.0f;
         
         if(distance > radius) {
-            print("Distance: " + distance);
             Vector3 playerToCenter = transform.position - Vector3.zero;
-            print("Player to Center: " + playerToCenter);
             Vector3 maxLocation = playerToCenter * radius / distance;
-            print("Max location: " + maxLocation);
             transform.position = Vector3.zero + maxLocation;
         }
+
+    }
+
+    private void FaceMouse() {
+        Vector3 targetPosition = Camera.main.WorldToScreenPoint(transform.position);
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        Vector3 relativePos = new Vector3(mousePosition.x, mousePosition.y, 0) - targetPosition;
+
+        var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle-90, Vector3.forward);
+        transform.rotation = rotation;
     }
 }
