@@ -20,7 +20,6 @@ public class Bullet : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        print(transform.forward.ToString());
         myRigidBody.velocity = transform.up * moveSpeed * Time.fixedDeltaTime;
     }
 
