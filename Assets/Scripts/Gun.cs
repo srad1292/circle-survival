@@ -10,15 +10,17 @@ public class Gun : MonoBehaviour
     private bool isFiring = false;
     private float timer = 0f;
 
+    private void Start() {
+        timer = fireDelay;
+    }
+
     private void Update() {
-        if(isFiring) {
-            timer += Time.deltaTime;
+        timer += Time.deltaTime;
+        if (isFiring) {
             if(timer >= fireDelay) {
                 Shoot();
                 timer = 0f;
             }
-        } else if(timer != 0f) {
-            timer = 0f;
         }
     }
 
@@ -30,8 +32,5 @@ public class Gun : MonoBehaviour
 
     public void SetIsFiring(bool isFiring) {
         this.isFiring = isFiring;
-        if(isFiring) {
-            Shoot();
-        }
     }
 }
