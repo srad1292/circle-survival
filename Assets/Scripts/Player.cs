@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
     }
 
     void OnFire(InputValue value) {
-        playerGun.Shoot();
+        playerGun.SetIsFiring(value.isPressed);
     }
 
     void OnHoldFire(InputValue value) {
