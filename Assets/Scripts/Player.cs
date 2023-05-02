@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private Vector2 movementInput = Vector2.zero;
     private Rigidbody2D myRigidbody2D;
 
+    private bool canShoot;
+
     void Start() {
         myRigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -53,10 +55,17 @@ public class Player : MonoBehaviour
     }
 
     void OnFire(InputValue value) {
-        playerGun.SetIsFiring(value.isPressed);
+        playerGun.SetIsFiring(value.isPressed && canShoot);
     }
 
     void OnHoldFire(InputValue value) {
-        playerGun.SetIsFiring(value.isPressed);
+        playerGun.SetIsFiring(value.isPressed && canShoot);
+    }
+
+    public void SetCanShoot(bool canShoot) {
+        this.canShoot = canShoot;
+        if (!canShoot) {
+            playerGun.SetIsFiring(false);
+        }
     }
 }
