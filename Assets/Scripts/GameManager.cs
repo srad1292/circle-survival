@@ -27,7 +27,24 @@ public class GameManager : MonoBehaviour
     
     private void HandleLevelComplete(int day) {
         print("Day " + day + " complete!");
-        this.day = day + 1;
-        
+        if(levelManager.GetLevelByDay(day+1).Count == 0) {
+            print("Game Complete!");
+            // Game complete
+        } else {
+            // if cutscene, show
+            // else nighttime menu
+
+            GoToNextDay();
+        }
+
+    }
+
+    private void ShowMenu() {
+
+    }
+
+    private void GoToNextDay() {
+        day += 1;
+        StartDayLevel(day);
     }
 }
