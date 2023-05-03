@@ -12,6 +12,14 @@ public class SpawnerController : MonoBehaviour
         enemy.SetPlayer(player);
     }
 
+    public void Spawn(SpawnerEnum from, Enemy prefab, System.Action enemyKilledHandler) {
+        int idx = (int)from;
+        Vector3 position = ChooseSpotWithinBounds(spawners[idx]);
+        Enemy enemy = Instantiate(prefab, position, Quaternion.identity);
+        enemy.OnEnemyKilled += enemyKilledHandler;
+        enemy.SetPlayer(player);
+    }
+
     private Vector3 ChooseSpotWithinBounds(BoxCollider2D spawner) {
         float xPos = Mathf.Round(Random.Range(spawner.bounds.min.x, spawner.bounds.max.x));
         float yPos = Mathf.Round(Random.Range(spawner.bounds.min.y, spawner.bounds.max.y));

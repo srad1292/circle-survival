@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
+    public Action OnEnemyKilled;
 
     [SerializeField] int health;
     public Player player;
@@ -21,6 +24,9 @@ public class Enemy : MonoBehaviour
     private void TakeDamage(Collider2D other) {
         health -= other.gameObject.GetComponent<Bullet>().damage;
         if (health <= 0) {
+            if(OnEnemyKilled != null) {
+                OnEnemyKilled.Invoke();
+            }
             Destroy(gameObject);
         }
     }

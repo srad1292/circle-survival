@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private Vector2 movementInput = Vector2.zero;
     private Rigidbody2D myRigidbody2D;
 
-    private bool canShoot;
+    private bool canShoot = true;
 
     void Start() {
         myRigidbody2D = GetComponent<Rigidbody2D>();
