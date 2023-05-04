@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
+    [SerializeField] NightMenu nightMenu; 
     [SerializeField] LevelPlayer levelPlayer;
 
     private int day = 0;
@@ -34,16 +35,17 @@ public class GameManager : MonoBehaviour
             // if cutscene, show
             // else nighttime menu
 
-            GoToNextDay();
+            ShowMenu();
         }
 
     }
 
     private void ShowMenu() {
-
+        nightMenu.gameObject.SetActive(true);
     }
 
-    private void GoToNextDay() {
+    public void GoToNextDay() {
+        nightMenu.gameObject.SetActive(false);
         day += 1;
         StartDayLevel(day);
     }

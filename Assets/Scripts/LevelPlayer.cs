@@ -8,6 +8,7 @@ public class LevelPlayer : MonoBehaviour
 
 
     [SerializeField] SpawnerController spawnerController;
+    [SerializeField] Player player;
 
     int day;
     int killedDuringWave = 0;
@@ -16,6 +17,7 @@ public class LevelPlayer : MonoBehaviour
     int currentWaveIndex = 0;
 
     public void PlayLevel(int day, List<Wave> waveConfig) {
+        player.SetCanShoot(true);
         this.day = day;
         this.waveConfig = new List<Wave>();
         this.waveConfig.AddRange(waveConfig);
@@ -65,11 +67,11 @@ public class LevelPlayer : MonoBehaviour
             enemy = wave.enemyOptions[Random.Range(0, wave.enemyOptions.Length - 1)];
             spawnerController.Spawn(spawnerDirection, enemy, EnemyKilled);
             spawned++;
-            print("Total Spawned: " + spawned);
         }
     }
 
     private void FinishLevel(int day) {
+        player.SetCanShoot(false);
         if(OnLevelComplete != null) {
             OnLevelComplete.Invoke(day);
         }
