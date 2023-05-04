@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    [SerializeField] Transform playerBulletContainer;
     [SerializeField] Bullet ammoType;
     [SerializeField] float fireDelay = 0.4f;
 
@@ -27,7 +28,9 @@ public class Gun : MonoBehaviour
 
     public void Shoot() {
         Vector3 spawnPoint = transform.position + (1.05f * transform.up);
-        Instantiate(ammoType, spawnPoint, transform.parent.transform.rotation);
+        Bullet bullet = Instantiate(ammoType, spawnPoint, transform.parent.transform.rotation);
+        bullet.transform.parent = playerBulletContainer;
+
     }
 
     public void SetIsFiring(bool isFiring) {

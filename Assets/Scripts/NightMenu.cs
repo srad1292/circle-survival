@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class NightMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] GameObject[] objectsToHide;
+
+    private void OnEnable() {
+        foreach(GameObject obj in objectsToHide) {
+            obj.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnDisable() {
+        foreach (GameObject obj in objectsToHide) {
+            obj.SetActive(true);
+        }
     }
 }

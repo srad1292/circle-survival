@@ -6,9 +6,9 @@ public class LevelPlayer : MonoBehaviour
 {
     public System.Action<int> OnLevelComplete;
 
-
     [SerializeField] SpawnerController spawnerController;
     [SerializeField] Player player;
+    [SerializeField] Transform playerBulletContainer;
 
     int day;
     int killedDuringWave = 0;
@@ -35,6 +35,9 @@ public class LevelPlayer : MonoBehaviour
                 FinishLevel(day);
             }
             else {
+                foreach (Transform bullet in playerBulletContainer) {
+                    Destroy(bullet.gameObject);
+                }
                 MoveToNextWave();
             }
         }

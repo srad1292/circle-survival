@@ -21,6 +21,10 @@ public class Player : MonoBehaviour
         
     }
 
+    private void OnDisable() {
+        movementInput = Vector2.zero;
+    }
+
     void FixedUpdate() {
         MovePlayer();
         FaceMouse();

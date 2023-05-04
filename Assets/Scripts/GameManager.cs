@@ -35,14 +35,16 @@ public class GameManager : MonoBehaviour
             // if cutscene, show
             // else nighttime menu
 
-            ShowMenu();
+            StartCoroutine(ShowMenuCO());
         }
 
     }
 
-    private void ShowMenu() {
+    IEnumerator ShowMenuCO() {
+        yield return new WaitForSeconds(0.8f);
         nightMenu.gameObject.SetActive(true);
     }
+
 
     public void GoToNextDay() {
         nightMenu.gameObject.SetActive(false);
