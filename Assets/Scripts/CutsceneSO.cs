@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CutsceneSO : MonoBehaviour
+[CreateAssetMenu(fileName = "Cutscene", menuName = "Create Cutscene", order = 1)]
+public class CutsceneSO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int dayToPlay;
+    public CutsceneSegment[] segments;
 }

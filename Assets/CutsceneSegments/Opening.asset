@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7331bea5376014ca93224880d027c2, type: 3}
+  m_Name: Opening
+  m_EditorClassIdentifier: 
+  segments:
+  - action: 1
+    actor: 0
+    captorDestination: 2
+    moveSpeed: 0
+    dialog:
+    - Wh..where am I?
+    - What's going on?
+    - Hello?
+    - HELLOO???
+  - action: 0
+    actor: 1
+    captorDestination: 0
+    moveSpeed: 4
+    dialog: []
+  - action: 1
+    actor: 1
+    captorDestination: 2
+    moveSpeed: 0
+    dialog:
+    - Ah.  You're finally awake.
+    - I'm sure you're curious about your current situation,
+    - You see, I have a little game I like to play.
+    - I have tied you up and provided you with a weapon.
+    - I will release creatures every day and watch you fight to survive.
+  - action: 1
+    actor: 0
+    captorDestination: 2
+    moveSpeed: 0
+    dialog:
+    - What!?
+    - Why me?  I don't even know you?
+  - action: 1
+    actor: 1
+    captorDestination: 2
+    moveSpeed: 0
+    dialog:
+    - You were just at the wrong place at the wrong time I'm afraid.
+    - Best of luck now.
+  - action: 0
+    actor: 1
+    captorDestination: 1
+    moveSpeed: 4
+    dialog: []

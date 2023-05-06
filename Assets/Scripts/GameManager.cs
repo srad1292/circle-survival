@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] NightMenu nightMenu; 
     [SerializeField] LevelPlayer levelPlayer;
+    [SerializeField] CutscenePlayer cutscenePlayer;
 
     private int day = 0;
     private LevelManager levelManager;
@@ -15,9 +16,23 @@ public class GameManager : MonoBehaviour
     {
         print("I am in GameManager.Start");
         levelManager = GetComponent<LevelManager>();
-
         levelPlayer.OnLevelComplete += HandleLevelComplete;
-        StartDayLevel(day);
+
+        cutscenePlayer.onCutsceneFinished += HandleCutsceneComplete;
+
+        PerformCutscene(day);
+    }
+
+    private void PerformCutscene(int day) {
+        cutscenePlayer.PlayCutsceneForDay(day);
+    }
+
+    private void HandleCutsceneComplete(int day) {
+        if(day == 0) {
+            StartDayLevel(day);
+        } else {
+            StartCoroutine(ShowMenuCO());
+        }
     }
 
     private void StartDayLevel(int day) {
@@ -30,15 +45,15 @@ public class GameManager : MonoBehaviour
         print("Day " + day + " complete!");
         if(levelManager.GetLevelByDay(day+1).Count == 0) {
             print("Game Complete!");
-            // Game complete
         } else {
-            // if cutscene, show
-            // else nighttime menu
-
-            StartCoroutine(ShowMenuCO());
+            if(day > 0) {
+                PerformCutscene(day);
+            } else {
+                StartCoroutine(ShowMenuCO());
+            }
         }
-
     }
+
 
     IEnumerator ShowMenuCO() {
         yield return new WaitForSeconds(0.8f);
