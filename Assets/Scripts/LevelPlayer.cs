@@ -17,7 +17,7 @@ public class LevelPlayer : MonoBehaviour
     int currentWaveIndex = 0;
 
     public void PlayLevel(int day, List<Wave> waveConfig) {
-        player.SetCanShoot(true);
+        player.SetInActiveLevel(true);
         this.day = day;
         this.waveConfig = new List<Wave>();
         this.waveConfig.AddRange(waveConfig);
@@ -74,7 +74,7 @@ public class LevelPlayer : MonoBehaviour
     }
 
     private void FinishLevel(int day) {
-        player.SetCanShoot(false);
+        player.SetInActiveLevel(false);
         if(OnLevelComplete != null) {
             OnLevelComplete.Invoke(day);
         }

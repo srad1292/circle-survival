@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private Vector2 movementInput = Vector2.zero;
     private Rigidbody2D myRigidbody2D;
 
-    private bool canShoot = true;
+    private bool inActiveLevel = false;
 
     void Start() {
         myRigidbody2D = GetComponent<Rigidbody2D>();
@@ -26,8 +26,10 @@ public class Player : MonoBehaviour
     }
 
     void FixedUpdate() {
-        MovePlayer();
-        FaceMouse();
+        if(inActiveLevel) {
+            MovePlayer();
+            FaceMouse();
+        } 
     }
 
     void MovePlayer() {
@@ -59,17 +61,19 @@ public class Player : MonoBehaviour
     }
 
     void OnFire(InputValue value) {
-        playerGun.SetIsFiring(value.isPressed && canShoot);
+        playerGun.SetIsFiring(value.isPressed && inActiveLevel);
     }
 
     void OnHoldFire(InputValue value) {
-        playerGun.SetIsFiring(value.isPressed && canShoot);
+        playerGun.SetIsFiring(value.isPressed && inActiveLevel);
     }
 
-    public void SetCanShoot(bool canShoot) {
-        this.canShoot = canShoot;
-        if (!canShoot) {
+    public void SetInActiveLevel(bool inActiveLevel) {
+        this.inActiveLevel = inActiveLevel;
+        if(inActiveLevel == false) {
             playerGun.SetIsFiring(false);
+            myRigidbody2D.velocity = Vector2.zero;
+            myRigidbody2D.SetRotation(Quaternion.identity);
         }
     }
 }

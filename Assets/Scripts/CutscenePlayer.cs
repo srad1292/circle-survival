@@ -72,8 +72,8 @@ public class CutscenePlayer : MonoBehaviour
             }
             bool arrived = false;
             while(!arrived) {
-                captorRigidBody.velocity = Vector2.MoveTowards(captor.transform.position, destination, segment.moveSpeed * Time.deltaTime);
-                if (Vector3.Distance(captor.transform.position, destination) <= 0.1f) {
+                captorRigidBody.transform.position = Vector2.MoveTowards(captor.transform.position, destination, segment.moveSpeed * Time.deltaTime);
+                if (Vector2.Distance(captor.transform.position, destination) <= 0.1f) {
                     arrived = true;
                 }
                 yield return null;
@@ -84,7 +84,23 @@ public class CutscenePlayer : MonoBehaviour
 
     IEnumerator PerformDialog(CutsceneSegment segment) {
         print("I am in perform dialog!");
-        yield return new WaitForSeconds(1f);
+        if(segment.dialog.Length == 0) {
+            yield return null;
+        }
+        Transform parent = segment.actor == CutsceneConfig.Actor.Player ? player.transform : captor.transform;
+        SpeechBubble bubble = SpeechBubble.Create(parent, new Vector3(1.5f, 1.5f, 0f), "");
+        print("Calling TraverseDialog");
+        yield return StartCoroutine(TraverseDialog(bubble, segment.dialog));
+        print("TraverseDialog Ended");
+        Destroy(bubble.gameObject);
+    }
+
+    IEnumerator TraverseDialog(SpeechBubble bubble, string[] dialog) {
+        foreach(string line in dialog) {
+            bubble.Setup(line);
+            yield return new WaitForSeconds(4f);
+            print("Went through line");
+        }
     }
 
 
