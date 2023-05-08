@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] CutscenePlayer cutscenePlayer;
 
     private int day = 0;
+    private int killScore = 0;
     private LevelManager levelManager;
 
     void Start()
@@ -65,5 +66,10 @@ public class GameManager : MonoBehaviour
         nightMenu.gameObject.SetActive(false);
         day += 1;
         StartDayLevel(day);
+    }
+
+    public void EnemyKilled(int killScore) {
+        this.killScore += killScore;
+        print("Current kill score: " + this.killScore);
     }
 }

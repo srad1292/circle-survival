@@ -5,18 +5,22 @@ public class SpawnerController : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] BoxCollider2D[] spawners;
 
-    public void Spawn(SpawnerEnum from, Enemy prefab) {
+    [SerializeField] LevelPlayer levelPlayer;
+    [SerializeField] GameManager gameManager;
+
+    public void SpawnNoActions(SpawnerEnum from, Enemy prefab) {
         int idx = (int)from;
         Vector3 position = ChooseSpotWithinBounds(spawners[idx]);
         Enemy enemy = Instantiate(prefab, position, Quaternion.identity);
         enemy.SetPlayer(player);
     }
 
-    public void Spawn(SpawnerEnum from, Enemy prefab, System.Action enemyKilledHandler) {
+    public void Spawn(SpawnerEnum from, Enemy prefab) {
         int idx = (int)from;
         Vector3 position = ChooseSpotWithinBounds(spawners[idx]);
         Enemy enemy = Instantiate(prefab, position, Quaternion.identity);
-        enemy.OnEnemyKilled += enemyKilledHandler;
+        enemy.OnEnemyKilled += levelPlayer.EnemyKilled;
+        enemy.OnEnemyKilled += gameManager.EnemyKilled;
         enemy.SetPlayer(player);
     }
 

@@ -27,7 +27,7 @@ public class LevelPlayer : MonoBehaviour
         StartCoroutine(WaitBetweenWaves(0.75f));
     }
 
-    private void EnemyKilled() {
+    public void EnemyKilled(int killScore) {
         killedDuringWave++;
         if(killedDuringWave >= currentWave.numEnemies) {
             print("Killed during wave: " + killedDuringWave);
@@ -68,7 +68,7 @@ public class LevelPlayer : MonoBehaviour
             yield return new WaitForSeconds(delay);
             spawnerDirection = (SpawnerEnum)Random.Range(0, 3);
             enemy = wave.enemyOptions[Random.Range(0, wave.enemyOptions.Length - 1)];
-            spawnerController.Spawn(spawnerDirection, enemy, EnemyKilled);
+            spawnerController.Spawn(spawnerDirection, enemy);
             spawned++;
         }
     }

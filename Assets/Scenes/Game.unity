@@ -2009,6 +2009,8 @@ MonoBehaviour:
   - {fileID: 1973149896}
   - {fileID: 2021949699}
   - {fileID: 1796013470}
+  levelPlayer: {fileID: 157884601}
+  gameManager: {fileID: 1360744956}
 --- !u!4 &1243255397
 Transform:
   m_ObjectHideFlags: 0

@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  killScore: 1
   player: {fileID: 0}
 --- !u!114 &5204789364246915580
 MonoBehaviour:

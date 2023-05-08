@@ -4,9 +4,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    public Action OnEnemyKilled;
+    public Action<int> OnEnemyKilled;
 
     [SerializeField] int health;
+    [SerializeField] int killScore;
     public Player player;
 
     public void SetPlayer(Player player) {
@@ -25,7 +26,7 @@ public class Enemy : MonoBehaviour
         health -= other.gameObject.GetComponent<Bullet>().damage;
         if (health <= 0) {
             if(OnEnemyKilled != null) {
-                OnEnemyKilled.Invoke();
+                OnEnemyKilled.Invoke(killScore);
             }
             Destroy(gameObject);
         }
