@@ -67,7 +67,7 @@ public class LevelPlayer : MonoBehaviour
             delay = Random.Range(wave.minSpawnDelay, wave.maxSpawnDelay);
             yield return new WaitForSeconds(delay);
             spawnerDirection = (SpawnerEnum)Random.Range(0, 3);
-            enemy = wave.enemyOptions[Random.Range(0, wave.enemyOptions.Length - 1)];
+            enemy = wave.enemyOptions[Random.Range(0, wave.enemyOptions.Length)];
             spawnerController.Spawn(spawnerDirection, enemy);
             spawned++;
         }

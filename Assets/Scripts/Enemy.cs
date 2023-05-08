@@ -9,9 +9,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] int health;
     [SerializeField] int killScore;
     public Player player;
+    public SpawnerEnum spawnedFrom;
 
     public void SetPlayer(Player player) {
         this.player = player;
+    }
+
+    public void SetSpawnedFrom(SpawnerEnum spawner) {
+        this.spawnedFrom = spawner;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

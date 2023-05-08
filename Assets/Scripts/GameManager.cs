@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
 
         cutscenePlayer.onCutsceneFinished += HandleCutsceneComplete;
 
-        PerformCutscene(day);
+        StartDayLevel(day);
+        //PerformCutscene(day);
     }
 
     private void PerformCutscene(int day) {

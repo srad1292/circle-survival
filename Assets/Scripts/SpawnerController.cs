@@ -22,6 +22,7 @@ public class SpawnerController : MonoBehaviour
         enemy.OnEnemyKilled += levelPlayer.EnemyKilled;
         enemy.OnEnemyKilled += gameManager.EnemyKilled;
         enemy.SetPlayer(player);
+        enemy.SetSpawnedFrom(from);
     }
 
     private Vector3 ChooseSpotWithinBounds(BoxCollider2D spawner) {
