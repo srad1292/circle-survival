@@ -11,6 +11,10 @@ public class Enemy : MonoBehaviour
     public Player player;
     public SpawnerEnum spawnedFrom;
 
+
+    private int shieldHealth = 0;
+    private GameObject shield;
+
     public void SetPlayer(Player player) {
         this.player = player;
     }
@@ -23,18 +27,39 @@ public class Enemy : MonoBehaviour
         if(other.gameObject.tag == "Bullet") {
             TakeDamage(other);
             Destroy(other.gameObject);
+        } else if(other.gameObject.tag == "ShieldGenerator") {
+            if(shield == null) {
+                shield = Shield.Create(transform);
+            }
+            shieldHealth = 20;
         }
 
     }
 
     private void TakeDamage(Collider2D other) {
-        health -= other.gameObject.GetComponent<Bullet>().damage;
-        if (health <= 0) {
-            if(OnEnemyKilled != null) {
-                OnEnemyKilled.Invoke(killScore);
+        // I added this line thinking I will have damage carry over if shield is destroyed, but now I'm thinking not
+        //int shieldBeforeDamage = shieldHealth;
+
+        int damage = other.gameObject.GetComponent<Bullet>().damage;
+        if (shieldHealth > 0) {
+            shieldHealth -= damage;
+            if(shieldHealth <= 0) {
+                if(shield != null) {
+                    Destroy(shield);
+                }
+                shield = null;
             }
-            Destroy(gameObject);
+        } else {
+            health -= damage;
+            if (health <= 0) {
+                if (OnEnemyKilled != null) {
+                    OnEnemyKilled.Invoke(killScore);
+                }
+                Destroy(gameObject);
+            }
         }
+
+        
     }
 
 

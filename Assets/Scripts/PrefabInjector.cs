@@ -16,4 +16,5 @@ public class PrefabInjector : MonoBehaviour
 
 
     public Transform piSpeechBubble;
+    public GameObject piShield;
 }

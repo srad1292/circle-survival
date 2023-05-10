@@ -7,7 +7,7 @@ public class ShieldDeployer : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float minTravelDistance;
     [SerializeField] float maxTravelDistance;
-    [SerializeField] GameObject shield;
+    [SerializeField] GameObject shieldGenerator;
 
     private Rigidbody2D myRigidBody;
     private Enemy enemy;
@@ -15,6 +15,7 @@ public class ShieldDeployer : MonoBehaviour
     private float distanceTravelled;
     private Vector3 lastPosition;
     private bool deployedShields;
+    private GameObject shieldGeneratorInstance;
 
     private void Start() {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -25,8 +26,15 @@ public class ShieldDeployer : MonoBehaviour
         deployedShields = false;
     }
 
+    private void OnDestroy() {
+        if(shieldGeneratorInstance != null) {
+            Destroy(shieldGeneratorInstance);
+        }
+    }
+
     private void FixedUpdate() {
-        if(distanceTravelled < travelDistance) {
+        bool onScreen = transform.position.y >= -14 && transform.position.y <= 14 && transform.position.x >= -26 && transform.position.x <= 26;
+        if(distanceTravelled < travelDistance || !onScreen) {
             Vector3 direction = (Vector3.zero - transform.position).normalized;
             myRigidBody.velocity = direction * speed * Time.fixedDeltaTime;
             distanceTravelled += Vector3.Distance(transform.position, lastPosition);
@@ -41,32 +49,30 @@ public class ShieldDeployer : MonoBehaviour
     }
 
     private void DeployShields() {
-        print("Will deploy shields");
         Vector3 scale = CalculateScale();
-        Vector3 offset = CalculateOffset();
-
-        Vector3 position = transform.position + offset;
-        GameObject shieldInstance = Instantiate(shield, position, Quaternion.identity);
-        shieldInstance.transform.localScale = scale;
+        Vector3 position = CalculatePosition();
+        shieldGeneratorInstance = Instantiate(shieldGenerator, position, Quaternion.identity);
+        shieldGeneratorInstance.transform.localScale = scale;
         
     }
 
     private Vector3 CalculateScale() {
+        // Current setup had these both print 1920/1080
+        //print("Pixel Width: " + Camera.main.pixelWidth + " Pixel Height: " + Camera.main.pixelHeight);
+        //print("Scaled Pixel Width: " + Camera.main.scaledPixelWidth + " Scaled Pixel Height: " + Camera.main.scaledPixelHeight);
         if (enemy.spawnedFrom == SpawnerEnum.Top || enemy.spawnedFrom == SpawnerEnum.Bottom) {
-            return new Vector3(Camera.main.pixelWidth, 1f, 1f);
+            return new Vector3(53f, 1f, 1f);
         }
         else {
-            return new Vector3(1f, Camera.main.pixelHeight, 1f);
+            return new Vector3(1f, 30f, 1f);
         }
     }
 
-    private Vector2 CalculateOffset() {
+    private Vector2 CalculatePosition() {
         if(enemy.spawnedFrom == SpawnerEnum.Top || enemy.spawnedFrom == SpawnerEnum.Bottom) {
-            int signer = transform.position.x < Camera.main.pixelWidth / 2 ? 1 : -1;
-            return new Vector2(Mathf.Abs(transform.position.x) - (Camera.main.pixelWidth/2), 0f) * signer;
+            return new Vector2(0f, transform.position.y);
         } else {
-            int signer = transform.position.y < Camera.main.pixelHeight / 2 ? 1 : -1;
-            return new Vector2(0f, Mathf.Abs(transform.position.y) - (Camera.main.pixelHeight / 2)) * signer;
+            return new Vector2(transform.position.x, 0f);
         }
     }
 }
