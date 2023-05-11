@@ -5,14 +5,16 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     [SerializeField] Transform playerBulletContainer;
-    [SerializeField] Bullet ammoType;
     [SerializeField] float fireDelay = 0.4f;
+    [SerializeField] GunSO gunData;
 
     private bool isFiring = false;
     private float timer = 0f;
 
     private void Start() {
+        
         timer = fireDelay;
+
     }
 
     private void Update() {
@@ -28,12 +30,18 @@ public class Gun : MonoBehaviour
 
     public void Shoot() {
         Vector3 spawnPoint = transform.position + (1.05f * transform.up);
-        Bullet bullet = Instantiate(ammoType, spawnPoint, transform.parent.transform.rotation);
+        Bullet bullet = Instantiate(gunData.bullet, spawnPoint, transform.parent.transform.rotation);
         bullet.transform.parent = playerBulletContainer;
 
     }
 
     public void SetIsFiring(bool isFiring) {
         this.isFiring = isFiring;
+    }
+
+    public void ChangeGunData(GunSO gunSO) {
+        gunData = gunSO;
+        fireDelay = 0.8f / (1.2f * gunSO.fireRate);
+        timer = 0f;
     }
 }
