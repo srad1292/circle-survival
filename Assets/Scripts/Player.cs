@@ -82,5 +82,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnSelectWeapon1(InputValue value) {
+        if(inActiveLevel)
+            weaponMasterData.SelectWeapon(0);
+    }
+    void OnSelectWeapon2(InputValue value) {
+        if(inActiveLevel)
+            weaponMasterData.SelectWeapon(1);
+    }
+    void OnSelectWeapon3(InputValue value) {
+        if(inActiveLevel)
+            weaponMasterData.SelectWeapon(2);
+    }
+    void OnSelectWeapon4(InputValue value) {
+        if(inActiveLevel)
+            weaponMasterData.SelectWeapon(3);
+    }
+
 
 }

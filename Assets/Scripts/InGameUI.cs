@@ -17,27 +17,6 @@ public class InGameUI : MonoBehaviour
         weaponMasterData.onGunSelected += HandleWeaponSelected;
     }
 
-    // Switched to new input system so I need to add these keys to input and move this to player input script
-    private void Update() {
-        print("In game UI In Active Level: " + inActiveLevel);
-        if (inActiveLevel) {
-            
-            if (Input.GetKeyDown(KeyCode.Alpha1)) {
-                weaponMasterData.SelectWeapon(0);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2)) {
-                print("selected item 2");
-                weaponMasterData.SelectWeapon(1);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3)) {
-                weaponMasterData.SelectWeapon(2);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha4)) {
-                weaponMasterData.SelectWeapon(3);
-            }
-        }
-    }
-
     private void SetIventorySprites() {
         List<GunSO> owned = weaponMasterData.GetOwnedGuns();
         for (int idx = 0; idx < inventoryItems.Length; idx++) {
