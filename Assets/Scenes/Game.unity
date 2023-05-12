@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerController: {fileID: 1243255396}
+  inGameUI: {fileID: 2067788732}
   player: {fileID: 818826787}
   playerBulletContainer: {fileID: 923627328}
 --- !u!1 &175115797
@@ -1794,6 +1795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 400
   playerGun: {fileID: 1966895190}
+  weaponMasterData: {fileID: 1161476728}
 --- !u!61 &818826788
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2373,6 +2375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1161476727}
+  - component: {fileID: 1161476728}
   m_Layer: 0
   m_Name: Weapon Master Data
   m_TagString: Untagged
@@ -2395,6 +2398,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1161476728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161476726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09671e5ec68ff7648b50c62796ffeaad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allGuns:
+  - {fileID: 11400000, guid: 14aa791efb6034f4c85dd0086248edb6, type: 2}
+  - {fileID: 11400000, guid: 71eaa5a755bbaff42a98f445d66f4623, type: 2}
+  ownedGuns:
+  - {fileID: 11400000, guid: 14aa791efb6034f4c85dd0086248edb6, type: 2}
+  - {fileID: 11400000, guid: 71eaa5a755bbaff42a98f445d66f4623, type: 2}
 --- !u!224 &1224302185 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5122376269435959005, guid: d99c589bea8e05a48bd9f68021fbd3b1, type: 3}
@@ -4005,6 +4026,7 @@ MonoBehaviour:
   - {fileID: 567776997}
   - {fileID: 2030892586}
   - {fileID: 1801977355}
+  weaponMasterData: {fileID: 1161476728}
 --- !u!1001 &157821106862506157
 PrefabInstance:
   m_ObjectHideFlags: 0

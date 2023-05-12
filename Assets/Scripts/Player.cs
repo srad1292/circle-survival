@@ -7,18 +7,19 @@ public class Player : MonoBehaviour
 {
     [SerializeField] float playerSpeed = 400f;
     [SerializeField] Gun playerGun;
-
+    [SerializeField] WeaponMasterData weaponMasterData;
+    
     private Vector2 movementInput = Vector2.zero;
     private Rigidbody2D myRigidbody2D;
 
     private bool inActiveLevel = false;
+    private List<GunSO> ownedGuns;
 
     void Start() {
         myRigidbody2D = GetComponent<Rigidbody2D>();
-    }
-
-    private void Update() {
-        
+        weaponMasterData.onGunSelected += HandleWeaponSelected;
+        ownedGuns = weaponMasterData.GetOwnedGuns();
+        playerGun.ChangeGunData(ownedGuns[0]);
     }
 
     private void OnDisable() {
@@ -68,6 +69,10 @@ public class Player : MonoBehaviour
         playerGun.SetIsFiring(value.isPressed && inActiveLevel);
     }
 
+    void HandleWeaponSelected(GunSO gunSO) {
+        playerGun.ChangeGunData(gunSO);
+    }
+
     public void SetInActiveLevel(bool inActiveLevel) {
         this.inActiveLevel = inActiveLevel;
         if(inActiveLevel == false) {
@@ -76,4 +81,6 @@ public class Player : MonoBehaviour
             myRigidbody2D.SetRotation(Quaternion.identity);
         }
     }
+
+
 }

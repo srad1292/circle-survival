@@ -12,9 +12,7 @@ public class Gun : MonoBehaviour
     private float timer = 0f;
 
     private void Start() {
-        
         timer = fireDelay;
-
     }
 
     private void Update() {
@@ -29,6 +27,7 @@ public class Gun : MonoBehaviour
 
 
     public void Shoot() {
+        if(gunData == null) { return; }
         Vector3 spawnPoint = transform.position + (1.05f * transform.up);
         Bullet bullet = Instantiate(gunData.bullet, spawnPoint, transform.parent.transform.rotation);
         bullet.transform.parent = playerBulletContainer;

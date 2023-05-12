@@ -7,6 +7,7 @@ public class LevelPlayer : MonoBehaviour
     public System.Action<int> OnLevelComplete;
 
     [SerializeField] SpawnerController spawnerController;
+    [SerializeField] InGameUI inGameUI;
     [SerializeField] Player player;
     [SerializeField] Transform playerBulletContainer;
 
@@ -18,6 +19,7 @@ public class LevelPlayer : MonoBehaviour
 
     public void PlayLevel(int day, List<Wave> waveConfig) {
         player.SetInActiveLevel(true);
+        inGameUI.SetInActiveLevel(true);
         this.day = day;
         this.waveConfig = new List<Wave>();
         this.waveConfig.AddRange(waveConfig);
@@ -75,7 +77,8 @@ public class LevelPlayer : MonoBehaviour
 
     private void FinishLevel(int day) {
         player.SetInActiveLevel(false);
-        if(OnLevelComplete != null) {
+        inGameUI.SetInActiveLevel(false);
+        if (OnLevelComplete != null) {
             OnLevelComplete.Invoke(day);
         }
     }
