@@ -2413,9 +2413,13 @@ MonoBehaviour:
   allGuns:
   - {fileID: 11400000, guid: 14aa791efb6034f4c85dd0086248edb6, type: 2}
   - {fileID: 11400000, guid: 71eaa5a755bbaff42a98f445d66f4623, type: 2}
+  - {fileID: 11400000, guid: 0ec8130c640d1404598a72e1c9f8047b, type: 2}
+  - {fileID: 11400000, guid: 70931440ab640654a9147e6c33fbfb79, type: 2}
   ownedGuns:
   - {fileID: 11400000, guid: 14aa791efb6034f4c85dd0086248edb6, type: 2}
   - {fileID: 11400000, guid: 71eaa5a755bbaff42a98f445d66f4623, type: 2}
+  - {fileID: 11400000, guid: 0ec8130c640d1404598a72e1c9f8047b, type: 2}
+  - {fileID: 11400000, guid: 70931440ab640654a9147e6c33fbfb79, type: 2}
 --- !u!224 &1224302185 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5122376269435959005, guid: d99c589bea8e05a48bd9f68021fbd3b1, type: 3}

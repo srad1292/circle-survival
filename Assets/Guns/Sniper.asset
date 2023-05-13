@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a2958ed07567514cacfb002a6f40ed2, type: 3}
-  m_Name: AssaultRifle
+  m_Name: Sniper
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: e9e4c85f2ec05c840819405c08555447, type: 3}
+  sprite: {fileID: 21300000, guid: 9d6af37dd06c8074bb574f2aade63038, type: 3}
   bullet: {fileID: 4798925643478961067, guid: c20321b3c4cdd32448199ba929768c72, type: 3}
-  gunName: Rifle
-  description: The classic assault rifle. Shred through creatures with high rate
-    of fire.
-  damage: 1
-  fireRate: 4
+  gunName: Sniper
+  description: ' sniper rifle that fires slowly but does massive damage'
+  damage: 4
+  fireRate: 1
