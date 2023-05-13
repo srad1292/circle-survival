@@ -7,6 +7,7 @@ public class SpawnerController : MonoBehaviour
 
     [SerializeField] LevelPlayer levelPlayer;
     [SerializeField] GameManager gameManager;
+    [SerializeField] InGameUI inGameUI;
 
     public void SpawnNoActions(SpawnerEnum from, Enemy prefab) {
         int idx = (int)from;
@@ -21,6 +22,7 @@ public class SpawnerController : MonoBehaviour
         Enemy enemy = Instantiate(prefab, position, Quaternion.identity);
         enemy.OnEnemyKilled += levelPlayer.EnemyKilled;
         enemy.OnEnemyKilled += gameManager.EnemyKilled;
+        enemy.OnEnemyKilled += inGameUI.HandleEnemyKilled;
         enemy.SetPlayer(player);
         enemy.SetSpawnedFrom(from);
     }

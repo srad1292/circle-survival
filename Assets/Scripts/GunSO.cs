@@ -8,6 +8,7 @@ public class GunSO : ScriptableObject
 
     public string gunName;
     public string description;
+    public int cost;
     
     public int damage;
     public int fireRate;

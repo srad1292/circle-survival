@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InGameUI : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI killScoreText;
     [SerializeField] InventoryItem[] inventoryItems;
     [SerializeField] WeaponMasterData weaponMasterData;
+
     
     private bool inActiveLevel = false;
     private int currentlySelectedIndex;
+    private int killScore = 0;
 
     private void Start() {
+        killScoreText.SetText(killScore.ToString());
         SetIventorySprites();
         currentlySelectedIndex = 0;
         inventoryItems[0].SelectItem();
@@ -36,6 +41,11 @@ public class InGameUI : MonoBehaviour
     public void SetInActiveLevel(bool inActiveLevel) {
         print("Setting in game ui in active level to " + inActiveLevel);
         this.inActiveLevel = inActiveLevel;
+    }
+
+    public void HandleEnemyKilled(int enemyKillScore) {
+        killScore += enemyKillScore;
+        killScoreText.SetText(killScore.ToString());
     }
 
 }

@@ -73,4 +73,8 @@ public class GameManager : MonoBehaviour
         this.killScore += killScore;
         print("Current kill score: " + this.killScore);
     }
+
+    public void HandleItemBought(GunSO gun) {
+        killScore -= gun.cost;
+    }
 }
