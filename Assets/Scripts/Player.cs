@@ -82,6 +82,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnPause(InputValue value) {
+        if(inActiveLevel) {
+            PauseMenu.Instance.TogglePauseState();
+        }
+    }
+
     void OnSelectWeapon1(InputValue value) {
         if(inActiveLevel)
             weaponMasterData.SelectWeapon(0);

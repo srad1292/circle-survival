@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "1e7fcee9-bbca-4dfb-8691-169fa82ef859",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -351,6 +360,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "SelectWeapon4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b826fb3-0ce6-4e84-9257-db9d214d2944",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
