@@ -16,5 +16,6 @@ MonoBehaviour:
   bullet: {fileID: 4798925643478961067, guid: c20321b3c4cdd32448199ba929768c72, type: 3}
   gunName: Sniper
   description: ' sniper rifle that fires slowly but does massive damage'
+  cost: 30
   damage: 4
   fireRate: 1

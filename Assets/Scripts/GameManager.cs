@@ -10,11 +10,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] CutscenePlayer cutscenePlayer;
 
     private int day = 0;
-    private int killScore = 0;
+    public int killScore { get; private set; }
     private LevelManager levelManager;
 
     void Start()
     {
+        killScore = 0;
         print("I am in GameManager.Start");
         levelManager = GetComponent<LevelManager>();
         levelPlayer.OnLevelComplete += HandleLevelComplete;

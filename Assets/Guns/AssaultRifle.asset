@@ -17,5 +17,6 @@ MonoBehaviour:
   gunName: Rifle
   description: The classic assault rifle. Shred through creatures with high rate
     of fire.
+  cost: 15
   damage: 1
   fireRate: 4

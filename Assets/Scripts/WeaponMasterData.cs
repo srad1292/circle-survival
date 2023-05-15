@@ -29,6 +29,10 @@ public class WeaponMasterData : MonoBehaviour
         return ownedGuns;
     }
 
+    public void GunPurchased(GunSO gunSO) {
+        ownedGuns.Add(gunSO);
+    }
+
 
 
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class NightMenu : MonoBehaviour
 {
     [SerializeField] GameObject[] objectsToHide;
+    [SerializeField] GameObject shopUI;
 
     private void OnEnable() {
         foreach(GameObject obj in objectsToHide) {
