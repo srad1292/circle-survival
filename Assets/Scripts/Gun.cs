@@ -31,6 +31,7 @@ public class Gun : MonoBehaviour
         Vector3 spawnPoint = transform.position + (1.05f * transform.up);
         Bullet bullet = Instantiate(gunData.bullet, spawnPoint, transform.parent.transform.rotation);
         bullet.transform.parent = playerBulletContainer;
+        StatisticsManager.Instance.HandleBulletFired();
 
     }
 

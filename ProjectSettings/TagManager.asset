@@ -8,6 +8,7 @@ TagManager:
   - EnemySpawner
   - Bullet
   - ShieldGenerator
+  - Enemy
   layers:
   - Default
   - TransparentFX

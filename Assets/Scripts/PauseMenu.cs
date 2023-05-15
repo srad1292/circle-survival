@@ -62,6 +62,10 @@ public class PauseMenu : MonoBehaviour
                 print(key + ": " + StatisticsManager.Instance.enemyKilledByType[key]);
             }
         }
+
+        print("Bullets Fired: " + StatisticsManager.Instance.bulletsFired);
+        print("Bullets Hit: " + StatisticsManager.Instance.bulletsHit);
+        print("Accuracy: " + StatisticsManager.Instance.GetAccuracy().ToString("F") + "%");
     }
 
     public void QuitGame() {

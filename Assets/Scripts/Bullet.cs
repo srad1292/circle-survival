@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
 
 
     Rigidbody2D myRigidBody;
+    private bool hasCountedAsHit = false;
 
     void Start()
     {
@@ -28,6 +29,9 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Shredders") {
             Destroy(gameObject);
+        } else if(other.gameObject.tag == "Enemy" && !hasCountedAsHit) {
+            hasCountedAsHit = true;
+            StatisticsManager.Instance.HandleBulletHit();
         }
     }
 }

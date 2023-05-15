@@ -29,10 +29,10 @@ public class StatisticsManager : MonoBehaviour
     public int totalKillScore { get; private set; }
 
     public void HandleEnemyKilled(string name, int killScore) {
-        if(enemyKilledByType.ContainsKey(name)) {
-            enemyKilledByType[name] += 1;
+        if(Instance.enemyKilledByType.ContainsKey(name)) {
+            Instance.enemyKilledByType[name] += 1;
         } else {
-            enemyKilledByType.Add(name, 1);
+            Instance.enemyKilledByType.Add(name, 1);
         }
 
         Instance.enemiesKilled++;
@@ -48,7 +48,7 @@ public class StatisticsManager : MonoBehaviour
     }
 
     public float GetAccuracy() {
-        return bulletsFired == 0 ? 0f : bulletsHit/bulletsFired;
+        return Instance.bulletsFired == 0 ? 0f : Instance.bulletsHit / (Instance.bulletsFired * 1f) * 100f;
     }
 
    
