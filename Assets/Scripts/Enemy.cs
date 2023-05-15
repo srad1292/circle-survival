@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] int health;
     [SerializeField] int killScore;
+    [SerializeField] string enemyName;
     public Player player;
     public SpawnerEnum spawnedFrom;
 
@@ -52,6 +53,7 @@ public class Enemy : MonoBehaviour
         } else {
             health -= damage;
             if (health <= 0) {
+                StatisticsManager.Instance.HandleEnemyKilled(enemyName, killScore);
                 if (OnEnemyKilled != null) {
                     OnEnemyKilled.Invoke(killScore);
                 }

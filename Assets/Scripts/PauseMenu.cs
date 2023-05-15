@@ -51,6 +51,17 @@ public class PauseMenu : MonoBehaviour
 
     public void ViewStatistics() {
         print("View Statistics pressed");
+        print("Total Enemies Killed: " + StatisticsManager.Instance.enemiesKilled);
+        print("Total Kill Score: " + StatisticsManager.Instance.totalKillScore);
+
+        print("Enemies Killed By Type");
+        if(StatisticsManager.Instance.enemyKilledByType.Count == 0) {
+            print("No enemies killed yet.");
+        } else {
+            foreach(string key in StatisticsManager.Instance.enemyKilledByType.Keys) {
+                print(key + ": " + StatisticsManager.Instance.enemyKilledByType[key]);
+            }
+        }
     }
 
     public void QuitGame() {

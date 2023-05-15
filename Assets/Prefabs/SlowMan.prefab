@@ -102,7 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 80
   killScore: 5
+  enemyName: SlowMan
   player: {fileID: 0}
+  spawnedFrom: 0
 --- !u!114 &5204789364246915580
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 30
   killScore: 3
+  enemyName: ShieldDeployer
   player: {fileID: 0}
   spawnedFrom: 0
 --- !u!114 &4389154363072755311
