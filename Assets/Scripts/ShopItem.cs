@@ -4,32 +4,32 @@ using TMPro;
 
 public class ShopItem : MonoBehaviour
 {
-    [SerializeField] GunSO gunSO;
+    public GunSO gunSO;
     [SerializeField] Image itemImage;
     [SerializeField] Button purchaseButton;
     [SerializeField] TextMeshProUGUI purchaseButtonText;
     [SerializeField] GameManager gameManager;
     [SerializeField] WeaponMasterData weaponMasterData;
+    [SerializeField] NightMenu nightMenu;
+    [SerializeField] ShopUI shopUI;
 
     private void OnEnable() {
         itemImage.sprite = gunSO.sprite;
         purchaseButtonText.SetText(gunSO.cost + " KS");
-        DetermineIfCanPurchase();
+       
     }
 
-    private void DetermineIfCanPurchase() {
-        if(weaponMasterData.GetOwnedGuns().Contains(gunSO) || gameManager.killScore < gunSO.cost) {
-            purchaseButton.enabled = false;
-        } else {
-            purchaseButton.enabled = true;
-        }
+    public void SetPurchaseable(bool canPurchase) {
+        purchaseButton.interactable = canPurchase;
     }
 
     public void BuyItem() {
-        purchaseButton.enabled = false;
+        SetPurchaseable(false);
         weaponMasterData.GunPurchased(gunSO);
         gameManager.HandleItemBought(gunSO);
+        nightMenu.HandleItemBought(gunSO.cost);
+        shopUI.DeterminePurchaseableItems();
     }
 
-   
+
 }

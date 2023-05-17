@@ -14,16 +14,21 @@ public class InGameUI : MonoBehaviour
     private int currentlySelectedIndex;
     private int killScore = 0;
 
+
     private void Start() {
-        killScoreText.SetText(killScore.ToString());
-        SetIventorySprites();
         currentlySelectedIndex = 0;
         inventoryItems[0].SelectItem();
         weaponMasterData.onGunSelected += HandleWeaponSelected;
     }
 
+    private void OnEnable() {
+        killScoreText.SetText(killScore.ToString());
+        SetIventorySprites();
+    }
+
     private void SetIventorySprites() {
         List<GunSO> owned = weaponMasterData.GetOwnedGuns();
+        print("In game ui owned count: " + owned.Count);
         for (int idx = 0; idx < inventoryItems.Length; idx++) {
             if (idx < owned.Count) {
                 inventoryItems[idx].SetWeaponSprite(owned[idx].sprite);
@@ -36,6 +41,11 @@ public class InGameUI : MonoBehaviour
         inventoryItems[currentlySelectedIndex].DeselectItem();
         inventoryItems[selectedIndex].SelectItem();
         currentlySelectedIndex = selectedIndex;
+    }
+
+    public void HandleLevelStarted() {
+        killScore = GameManager.killScore;
+        killScoreText.SetText(killScore.ToString());
     }
 
     public void SetInActiveLevel(bool inActiveLevel) {

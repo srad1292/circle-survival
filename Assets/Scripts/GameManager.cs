@@ -10,12 +10,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] CutscenePlayer cutscenePlayer;
 
     private int day = 0;
-    public int killScore { get; private set; }
+    public static int killScore { get; private set; }
     private LevelManager levelManager;
 
     void Start()
     {
-        killScore = 0;
+        killScore = 50;
         print("I am in GameManager.Start");
         levelManager = GetComponent<LevelManager>();
         levelPlayer.OnLevelComplete += HandleLevelComplete;
@@ -70,9 +70,9 @@ public class GameManager : MonoBehaviour
         StartDayLevel(day);
     }
 
-    public void EnemyKilled(int killScore) {
-        this.killScore += killScore;
-        print("Current kill score: " + this.killScore);
+    public void EnemyKilled(int worth) {
+        killScore += worth;
+        print("Current kill score: " + killScore);
     }
 
     public void HandleItemBought(GunSO gun) {

@@ -20,6 +20,7 @@ public class LevelPlayer : MonoBehaviour
     public void PlayLevel(int day, List<Wave> waveConfig) {
         player.SetInActiveLevel(true);
         inGameUI.SetInActiveLevel(true);
+        inGameUI.HandleLevelStarted();
         this.day = day;
         this.waveConfig = new List<Wave>();
         this.waveConfig.AddRange(waveConfig);

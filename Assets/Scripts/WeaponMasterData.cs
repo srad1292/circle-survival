@@ -12,10 +12,10 @@ public class WeaponMasterData : MonoBehaviour
 
     private void Start() {
         selectedIndex = 0;
+        print("Number of guns owned: " + ownedGuns.Count);
     }
 
     private void Update() {
-        
     }
 
     public void SelectWeapon(int index) {
@@ -26,10 +26,14 @@ public class WeaponMasterData : MonoBehaviour
     }
 
     public List<GunSO> GetOwnedGuns() {
-        return ownedGuns;
+        print("Getting copy of owned guns.  Count should be: " + ownedGuns.Count);
+        List<GunSO> copyOf = new List<GunSO>();
+        copyOf.AddRange(ownedGuns);
+        return copyOf;
     }
 
     public void GunPurchased(GunSO gunSO) {
+        print("I am adding " + gunSO.gunName + " to owned guns");
         ownedGuns.Add(gunSO);
     }
 
