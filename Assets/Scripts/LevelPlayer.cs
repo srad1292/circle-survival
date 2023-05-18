@@ -33,7 +33,6 @@ public class LevelPlayer : MonoBehaviour
     public void EnemyKilled(int killScore) {
         killedDuringWave++;
         if(killedDuringWave >= currentWave.numEnemies) {
-            print("Killed during wave: " + killedDuringWave);
             if (currentWaveIndex >= waveConfig.Count-1) {
                 FinishLevel(day);
             }
@@ -47,7 +46,6 @@ public class LevelPlayer : MonoBehaviour
     }
 
     private void MoveToNextWave() {
-        print("I completed a wave!");
         killedDuringWave = 0;
         currentWaveIndex += 1;
         float pauseDuration = currentWave.pauseBeforeNextWave;
@@ -65,7 +63,6 @@ public class LevelPlayer : MonoBehaviour
         SpawnerEnum spawnerDirection;
         Enemy enemy;
         int spawned = 0;
-        print("I am in spawn wave.  Will spawn " + wave.numEnemies + " enemies");
         while (spawned < wave.numEnemies) {
             delay = Random.Range(wave.minSpawnDelay, wave.maxSpawnDelay);
             yield return new WaitForSeconds(delay);

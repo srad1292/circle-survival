@@ -1,15 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ShopUI : MonoBehaviour
 {
     [SerializeField] ShopItem[] inventory;
     [SerializeField] WeaponMasterData weaponMasterData;
+    [SerializeField] ItemPreview itemPreview;
+    [SerializeField] LayerMask shopItemLayer;
+
+    GunSO previewing;
 
     private void OnEnable() {
-        print("Shop UI owned count: " + weaponMasterData.GetOwnedGuns().Count);
+        itemPreview.gameObject.SetActive(false);
         DeterminePurchaseableItems();
+    }
+
+    private void OnDisable() {
+        previewing = null;
     }
 
     public void DeterminePurchaseableItems() {
@@ -18,12 +27,10 @@ public class ShopUI : MonoBehaviour
             bool ownsGun = false;
 
             foreach (GunSO gunSO in owned) {
-                print("Owned Gun Name: " + gunSO.gunName);
                 if (gunSO.gunName == inventory[index].gunSO.gunName) {
                     ownsGun = true;
                 }
             }
-            print(inventory[index].gunSO.gunName + " -- Already owned? " + ownsGun + " --- gmKS = " + GameManager.killScore + "  cost = " + inventory[index].gunSO.cost);
 
 
             if (ownsGun || GameManager.killScore < inventory[index].gunSO.cost) {
@@ -34,6 +41,24 @@ public class ShopUI : MonoBehaviour
             }
         }
         
+    }
+
+    public void TurnOnPreview(GunSO gunSO) {
+        previewing = gunSO;
+        itemPreview.SetPreviewItem(gunSO);
+        itemPreview.gameObject.SetActive(true);
+    }
+
+    public void TurnOffPreview() {
+        previewing = null;
+        StartCoroutine(DelayHidingPreview());
+    }
+
+    IEnumerator DelayHidingPreview() {
+        yield return new WaitForSeconds(0.15f);
+        if(previewing == null) {
+            itemPreview.gameObject.SetActive(false);
+        }
     }
 
 }

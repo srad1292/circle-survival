@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 8758145346468607363}
   - component: {fileID: 8758145346468607362}
   - component: {fileID: -8458620405372176093}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: ShopItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,8 +437,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunSO: {fileID: 0}
+  backgroundPanel: {fileID: 8758145346468607362}
   itemImage: {fileID: 8758145346446227352}
   purchaseButton: {fileID: 8758145346218651941}
   purchaseButtonText: {fileID: 8758145346441011169}
   gameManager: {fileID: 8330533101543370412, guid: b4d8f6bdf02527d478b55ed65fb36453, type: 3}
   weaponMasterData: {fileID: 1173648063082850182, guid: 29864932b6919a84fb275d487a10f830, type: 3}
+  nightMenu: {fileID: 0}
+  shopUI: {fileID: 0}

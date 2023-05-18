@@ -28,7 +28,6 @@ public class InGameUI : MonoBehaviour
 
     private void SetIventorySprites() {
         List<GunSO> owned = weaponMasterData.GetOwnedGuns();
-        print("In game ui owned count: " + owned.Count);
         for (int idx = 0; idx < inventoryItems.Length; idx++) {
             if (idx < owned.Count) {
                 inventoryItems[idx].SetWeaponSprite(owned[idx].sprite);
@@ -49,7 +48,6 @@ public class InGameUI : MonoBehaviour
     }
 
     public void SetInActiveLevel(bool inActiveLevel) {
-        print("Setting in game ui in active level to " + inActiveLevel);
         this.inActiveLevel = inActiveLevel;
     }
 

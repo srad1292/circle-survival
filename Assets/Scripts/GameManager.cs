@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         killScore = 50;
-        print("I am in GameManager.Start");
         levelManager = GetComponent<LevelManager>();
         levelPlayer.OnLevelComplete += HandleLevelComplete;
 
@@ -39,15 +38,12 @@ public class GameManager : MonoBehaviour
     }
 
     private void StartDayLevel(int day) {
-        print("I am in GameManager.StartDayLevel");
         levelPlayer.PlayLevel(day, levelManager.GetLevelByDay(day));
     }
 
     
     private void HandleLevelComplete(int day) {
-        print("Day " + day + " complete!");
         if(levelManager.GetLevelByDay(day+1).Count == 0) {
-            print("Game Complete!");
         } else {
             if(day > 0) {
                 PerformCutscene(day);
@@ -72,7 +68,6 @@ public class GameManager : MonoBehaviour
 
     public void EnemyKilled(int worth) {
         killScore += worth;
-        print("Current kill score: " + killScore);
     }
 
     public void HandleItemBought(GunSO gun) {
