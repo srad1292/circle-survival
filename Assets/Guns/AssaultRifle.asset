@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AssaultRifle
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: e9e4c85f2ec05c840819405c08555447, type: 3}
-  bullet: {fileID: 4798925643478961067, guid: c20321b3c4cdd32448199ba929768c72, type: 3}
+  bullet: {fileID: 4798925643478961067, guid: f64dffd5ee18e4742a9d18da234984b1, type: 3}
   gunName: Rifle
   description: The classic assault rifle. Shred through creatures with high rate
     of fire.

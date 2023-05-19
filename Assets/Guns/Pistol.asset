@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: c0d580e142d005c4e92fc94f10cae695, type: 3}
-  bullet: {fileID: 4798925643478961067, guid: c20321b3c4cdd32448199ba929768c72, type: 3}
+  bullet: {fileID: 4798925643478961067, guid: aef3cc2f3bf73fe46a9763281ff4e251, type: 3}
   gunName: Pistol
   description: A basic pistol.  Still good enough for blasting monsters.
+  cost: 0
   damage: 1
   fireRate: 2
