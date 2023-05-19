@@ -12,6 +12,10 @@ public class LevelManager: MonoBehaviour
     private List<Wave> GetDayZero() {
         List<Wave> waves = new List<Wave>();
         waves.AddRange(new Wave[]{
+            new Wave(8, new Enemy[] { zombie }, 0.4f, 0.92f, 2.2f, 3f, SpawnerEnum.Top),
+            new Wave(8, new Enemy[] { zombie }, 0.4f, 0.92f, 2.2f, SpawnerEnum.Right),
+            new Wave(8, new Enemy[] { zombie }, 0.4f, 0.92f, 2.2f, 5f, SpawnerEnum.Left),
+            new Wave(8, new Enemy[] { zombie }, 0.4f, 0.92f, 2.2f, SpawnerEnum.Bottom),
             new Wave(8, new Enemy[] { zombie }, 0.4f, 0.92f, 2.2f),
             /*new Wave(9, new Enemy[] { zombie, shieldDeployer }, 0.4f, 0.92f, 2.2f),
             new Wave(15, new Enemy[] { zombie }, 0.4f, 0.92f, 2.2f),
